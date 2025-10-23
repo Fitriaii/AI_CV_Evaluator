@@ -28,7 +28,7 @@ async function generateEmbedding(text) {
 
   try {
     const response = await openai.chat.completions.create({
-      model: "mistralai/mistral-nemo", // kamu bisa ganti ke model openrouter lain
+      model: "mistralai/mistral-nemo",
       messages: [
         {
           role: "system",
@@ -49,19 +49,17 @@ async function generateEmbedding(text) {
     console.log("=== RAW PSEUDO EMBEDDING RESPONSE ===");
     console.log(rawOutput);
 
-    // cari array di dalam teks (meskipun ada kalimat di luar)
+
     const arrayMatch = rawOutput.match(/\[([\s\S]*?)\]/);
     if (arrayMatch) {
       const embedding = JSON.parse(arrayMatch[0]);
       if (Array.isArray(embedding)) return embedding;
     }
 
-    // kalau masih gagal, fallback ke random vector agar flow tidak berhenti
-    console.warn("⚠️ Could not parse embedding. Using random vector fallback.");
+    console.warn(" Could not parse embedding. Using random vector fallback.");
     return Array.from({ length: 256 }, () => Math.random() * 2 - 1);
   } catch (error) {
-    console.error("❌ Embedding generation failed:", error.message);
-    // fallback juga kalau error
+    console.error(" Embedding generation failed:", error.message);
     return Array.from({ length: 256 }, () => Math.random() * 2 - 1);
   }
 }

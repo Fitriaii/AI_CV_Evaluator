@@ -123,7 +123,6 @@ Provide a detailed evaluation in strict JSON format as follows:
       };
     }
 
-    // Simpan ke DB (opsional, sesuai skema DB kamu)
     await prisma.evaluation.create({
       data: {
         cvId: cv.id,
