@@ -1,0 +1,38 @@
+{
+  "name": "ai-cv-evaluator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon backend/src/index.js",
+    "generate": "prisma generate --schema=backend/prisma/schema.prisma",
+    "migrate": "prisma migrate dev --schema=backend/prisma/schema.prisma --name init"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@chroma-core/default-embed": "^0.1.8",
+    "@prisma/client": "^6.17.1",
+    "bcrypt": "^6.0.0",
+    "chromadb": "^3.0.17",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "joi": "^18.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "openai": "^6.5.0",
+    "pdf-parse": "^1.1.1",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/uuid": "^11.0.0",
+    "nodemon": "^3.1.10",
+    "prisma": "file:prisma/client@latest"
+  }
+}
